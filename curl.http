@@ -1,0 +1,26 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+###  curl -d "mobile=15726817104&passwd=123456"   http://127.0.0.1:9001/user/register
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+###  curl -d "mobile=15726817104&passwd=123456"   http://127.0.0.1:9001/user/register
+
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###

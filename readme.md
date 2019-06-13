@@ -1,0 +1,1 @@
+curl -d "mobile=15726817104&passwd=123456" http://127.0.0.1:9001/user/register

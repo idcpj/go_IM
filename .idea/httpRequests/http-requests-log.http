@@ -1,0 +1,400 @@
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092819.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092548.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092509.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092345.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092252.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092236.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T092149.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T091842.200.json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+<> 2019-06-13T091404.200.txt
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+<> 2019-06-13T091250.200.txt
+
+###
+
+GET http://127.0.0.1:9001/refresh
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
+<> 2019-06-13T090014.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537322321024&passwd=12321
+
+<> 2019-06-13T084318.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537322321024&passwd=12321
+
+<> 2019-06-13T084252.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537322321024&passwd=12321
+
+<> 2019-06-13T084249.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=153733222222321024&passwd=12321
+
+<> 2019-06-13T084227.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=153733222222321024&passwd=12321
+
+<> 2019-06-13T084219.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332222321024&passwd=12321
+
+<> 2019-06-13T084210.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332222321024&passwd=12321
+
+<> 2019-06-13T084105.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332222321024&passwd=12321
+
+<> 2019-06-13T084004.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332222321024&passwd=12321
+
+<> 2019-06-13T083753.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332222321024&passwd=12321
+
+<> 2019-06-11T095954.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332222321024&passwd=12321
+
+<> 2019-06-11T095736.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=153733222231024&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537332221024&passwd=12321
+
+<> 2019-06-11T095522.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=153733221024&passwd=12321
+
+<> 2019-06-11T095510.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=153733221024&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15373321024&passwd=12321
+
+<> 2019-06-11T095345.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15373321024&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537331024&passwd=12321
+
+<> 2019-06-11T095317.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1537331024&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=157226812225233733104&passwd=12321
+
+<> 2019-06-11T095243.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15722681225233733104&passwd=12321
+
+<> 2019-06-11T095035.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1572681225233733104&passwd=12321
+
+<> 2019-06-11T094858.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=157268122523733104&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726812252733104&passwd=12321
+
+<> 2019-06-11T094632.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1572681225733104&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=157268122573104&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726812257104&passwd=12321
+
+<> 2019-06-11T093953.200.txt
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1572681227104&passwd=12321
+
+<> 2019-06-11T093732.200.txt
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1572681227104&passwd=12321
+
+<> 2019-06-11T093727.200.txt
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=1572681227104&passwd=12321
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=157268127104&passwd=12321
+
+<> 2019-06-11T093503.200.txt
+
+###
+
+POST http://127.0.0.1:9001/user/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=157268127104&passwd={{passwd}}
+
+###
+

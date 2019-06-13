@@ -1,0 +1,15 @@
+{
+  "code": -1,
+  "msg": "asd",
+  "data": {
+    "id": 1232,
+    "mobile": "1537332221024",
+    "avatar": "",
+    "sex": "U",
+    "nickname": "user_007887",
+    "online": 0,
+    "token": "",
+    "memo": "",
+    "createat": "2019-06-11T21:55:22.4783+08:00"
+  }
+}
