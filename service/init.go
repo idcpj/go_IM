@@ -21,9 +21,10 @@ func init() {
 	//设置数据库连接数
 	DbEngin.SetMaxOpenConns(2)
 
-
 	//创建表
-	DbEngin.Sync2(new(model.User))
-
+	DbEngin.Sync2(
+		new(model.User),
+		new(model.Contact),
+	)
 
 }

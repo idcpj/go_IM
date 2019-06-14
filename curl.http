@@ -17,7 +17,14 @@ Content-Type: application/x-www-form-urlencoded
 
 mobile=15726817105&passwd=123456
 
-###  curl -d "mobile=15726817104&passwd=123456"   http://127.0.0.1:9001/user/register
+###
+
+POST http://127.0.0.1:9001/contact/loadfriend
+Content-Type: application/x-www-form-urlencoded
+
+userid=1239
+
+###
 
 
 GET http://127.0.0.1:9001/refresh

@@ -59,6 +59,8 @@
                     if(res.code!=0){
                         mui.toast(res.msg)
                     }else{
+                        console.log(res);
+                        sessionStorage.setItem("userinfo",JSON.stringify(res.data))
                         var url = "/chat/index.shtml?id="+res.data.id
                                 +"&token="+res.data.token
 
