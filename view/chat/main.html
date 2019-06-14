@@ -11,17 +11,18 @@
         <span v-text="JSON.stringify(msglist)"></span>
           -->
          <!--单聊且是他发的item.userid=msgcontext.dstid && 发给我的 item.dstid=myid 或者是我item.userid= myid发的,&&发给他的item.dstid= msgcontext.dstid 我发给他的  -->
+
         <li class="chat " :class="item.ismine?'mine':'other'" v-for="item in msglist" v-if="item.msg.cmd==msgcontext.cmd && (( item.msg.cmd==10 &&  (item.ismine? item.msg.dstid==msgcontext.dstid : item.msg.dstid==msgcontext.userid )) || ( item.msg.cmd==11 &&  (item.msg.dstid==msgcontext.dstid))) ">
             
             <div >
-            <img class="avatar" :src="item.user.avatar" />
+            <img class="avatar" :src="item.user.avatar?item.user.avatar:'item.user.avatar'" />
         </div>
 
         <span ></span>
         <div class="content">
             <div v-if="item.msg.media==1" v-text="item.msg.content"></div>
             <img class="pic" v-if="item.msg.media==4" :src="item.msg.url" />
-            <div v-if="item.msg.media==3" @tap="playaudio(item.msg.url)">
+            <div v-if="item.msg.media==3" @click="playaudio(item.msg.url)">
                 <img class="audio" src="/asset/images/audiom.png" />
                 <span v-text="item.msg.amount"></span>
             </div>

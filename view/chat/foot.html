@@ -3,14 +3,14 @@
 
     function upload(dom){
         uploadfile("attach/upload",dom,function(res){
-            if(res.code==200){
+            if(res.code===0){
                 app.sendpicmsg(res.data)
             }
 
         })
     }
     function userId(){
-        return util.parseQuery("id")
+        return parseInt(util.parseQuery("id"))
     }
     var app=new Vue(
             {
@@ -218,6 +218,7 @@
                         data.user = user;
                         data.msg = msg;
                         this.msglist = this.msglist.concat(data)
+                        console.log(this.msglist);
                         this.reset();
                         var that =this;
                         that.timer = setTimeout(function(){
@@ -242,6 +243,7 @@
                         var msg =this.createmsgcontext();
                         msg.media=4;
                         msg.url=picurl;
+                        console.log("img =========",msg);
                         this.showmsg(userInfo(),msg)
                         this.webSocket.send(JSON.stringify(msg))
                     },
@@ -251,7 +253,7 @@
                         msg.media=3;
                         msg.url=url;
                         msg.amount = num;
-                        this.showmsg(userInfo(),msg)
+                        this.showmsg(userInfo(),msg);
                         console.log("sendaudiomsg",this.msglist);
                         this.webSocket.send(JSON.stringify(msg))
                     },
@@ -293,6 +295,7 @@
                         this.webSocket=new WebSocket(url);
                         //消息处理
                         this.webSocket.onmessage = function(evt){
+                            console.log(evt);
                             //{"data":"}",...}
                             if(evt.data.indexOf("}")>-1){
                                 this.onmessage(JSON.parse(evt.data));
@@ -392,7 +395,7 @@
                     quit:function () {
                         sessionStorage.removeItem("userid")
                         sessionStorage.removeItem("userinfo")
-                        location.href="login.shtml"
+                        location.href="/user/login.shtml"
                     }
 
 

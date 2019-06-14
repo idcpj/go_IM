@@ -1,7 +1,7 @@
 package ctrl
 
 import (
-	"fmt"
+	"encoding/json"
 	"github.com/gorilla/websocket"
 	"go_web/model"
 	"go_web/service"
@@ -10,6 +10,60 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
+)
+
+type Message struct {
+	Id int64 `json:"id,omitempty" form:"id"` //消息ID
+	//谁发的
+	Userid int64 `json:"userid,omitempty" form:"userid"` //谁发的
+	//什么业务
+	Cmd int `json:"cmd,omitempty" form:"cmd"` //群聊还是私聊
+	//发给谁
+	Dstid int64 `json:"dstid,omitempty" form:"dstid"` //对端用户ID/群ID
+	//怎么展示
+	Media int `json:"media,omitempty" form:"media"` //消息按照什么样式展示
+	//内容是什么
+	Content string `json:"content,omitempty" form:"content"` //消息的内容
+	//图片是什么
+	Pic string `json:"pic,omitempty" form:"pic"` //预览图片
+	//连接是什么
+	Url string `json:"url,omitempty" form:"url"` //服务的URL
+	//简单描述
+	Memo string `json:"memo,omitempty" form:"memo"` //简单描述
+	//其他的附加数据，语音长度/红包金额
+	Amount int `json:"amount,omitempty" form:"amount"` //其他和数字相关的
+}
+
+const (
+	//点对点单聊,dstid是用户ID
+	CMD_SINGLE_MSG = 10
+	//群聊消息,dstid是群id
+	CMD_ROOM_MSG = 11
+	//心跳消息,不处理
+	CMD_HEART = 0
+)
+const (
+	//文本样式
+	MEDIA_TYPE_TEXT = 1
+	//新闻样式,类比图文消息
+	MEDIA_TYPE_News = 2
+	//语音样式
+	MEDIA_TYPE_VOICE = 3
+	//图片样式
+	MEDIA_TYPE_IMG = 4
+
+	//红包样式
+	MEDIA_TYPE_REDPACKAGR = 5
+	//emoj表情样式
+	MEDIA_TYPE_EMOJ = 6
+	//超链接样式
+	MEDIA_TYPE_LINK = 7
+	//视频样式
+	MEDIA_TYPE_VIDEO = 8
+	//名片样式
+	MEDIA_TYPE_CONCAT = 9
+	//其他自己定义,前端做相应解析即可
+	MEDIA_TYPE_UDEF = 100
 )
 
 type Node struct {
@@ -65,10 +119,31 @@ func recvproc(node *Node) {
 	for {
 		_, data, err := node.Conn.ReadMessage()
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			return
 		}
-		fmt.Println("recv     :", data)
+		dispath(data)
+		log.Println("data    :", string(data))
+	}
+}
+
+func dispath(data []byte) {
+	//解析 data 为 message
+
+	msg := Message{}
+	e := json.Unmarshal(data, &msg)
+	if e != nil {
+		log.Println(e)
+		return
+	}
+	//根据 cmd 进行处理
+
+	switch msg.Cmd {
+	case CMD_SINGLE_MSG:
+		sendMsg(msg.Dstid, data)
+	case CMD_ROOM_MSG:
+		//群聊转发逻辑
+	case CMD_HEART:
 
 	}
 }
