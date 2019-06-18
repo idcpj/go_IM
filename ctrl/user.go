@@ -2,6 +2,7 @@ package ctrl
 
 import (
 	"fmt"
+	"go_web/args"
 	"go_web/model"
 	"go_web/service"
 	"go_web/util"
@@ -43,4 +44,16 @@ func UserRegister(w http.ResponseWriter, r *http.Request) {
 		util.RespOk(w, user, "")
 
 	}
+}
+
+func UserInfo(w http.ResponseWriter, r *http.Request) {
+	var user args.User
+	util.Bind(r,&user)
+	userInfo, e := userServe.GetUser(user.UserId)
+	if e != nil {
+		util.RespFail(w,e.Error())
+	}else{
+		util.RespOk(w,userInfo,"")
+	}
+
 }

@@ -38,3 +38,46 @@ func Loadfriend(w http.ResponseWriter, r *http.Request) {
 	util.RespOkList(w, users, int64(len(users)))
 
 }
+
+
+func LoadCommunity(w http.ResponseWriter, req *http.Request){
+	var arg args.ContactArg
+	//如果这个用的上,那么可以直接
+	util.Bind(req,&arg)
+	comunitys := contactService.SearchComunity(arg.Userid)
+	util.RespOkList(w,comunitys,int64(len(comunitys)))
+}
+func JoinCommunity(w http.ResponseWriter, req *http.Request){
+	var arg args.ContactArg
+
+	//如果这个用的上,那么可以直接
+	util.Bind(req,&arg)
+	err := contactService.JoinCommunity(arg.Userid,arg.Dstid)
+
+	if err!=nil{
+		util.RespFail(w,err.Error())
+	}else {
+		addGroupId(arg.Userid,arg.Dstid)
+		util.RespOk(w,nil,"")
+	}
+}
+
+func AddCommunity(w http.ResponseWriter, req *http.Request){
+	var arg args.ContactArg
+	util.Bind(req,&arg)
+	group,e := contactService.CreateGroup(arg.Userid, arg.GroupName)
+	if e != nil {
+		util.RespFail(w,e.Error())
+	}else{
+		util.RespOk(w,group,"")
+	}
+}
+
+func addGroupId(userId int64, groupId int64) {
+	rw.Lock()
+	node,ok:=clientMap[userId]
+	if ok {
+		node.GroupSets.Add(groupId)
+	}
+	rw.Unlock()
+}

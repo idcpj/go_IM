@@ -30,10 +30,18 @@ func init() {
 func main() {
 	http.HandleFunc("/user/login", ctrl.UserLogin)
 	http.HandleFunc("/user/register", ctrl.UserRegister)
+	http.HandleFunc("/user/find", ctrl.UserInfo)
+
 	http.HandleFunc("/contact/addfriend", ctrl.Addfriend)
 	http.HandleFunc("/contact/loadfriend", ctrl.Loadfriend)
+	http.HandleFunc("/contact/loadcommunity", ctrl.LoadCommunity)
+	http.HandleFunc("/contact/joincommunity", ctrl.JoinCommunity)
+	http.HandleFunc("/contact/addcommunity", ctrl.AddCommunity)
+
 	http.HandleFunc("/attach/upload", ctrl.Upload)
 	http.HandleFunc("/chat", ctrl.Chat)
+
+
 
 	http.Handle("/asset/", http.FileServer(http.Dir(".")))
 	http.Handle("/mnt/", http.FileServer(http.Dir(".")))

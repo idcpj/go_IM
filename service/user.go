@@ -64,3 +64,14 @@ func (this *UserServer) Login(plainpwd, mobile string) (model.User, error) {
 	return user, nil
 
 }
+
+func (this *UserServer) GetUser(userId int64) (model.User,error){
+	var user model.User
+	user.Id= userId
+	_, e := DbEngin.Get(&user)
+	if e != nil {
+		return user,e
+	}
+	return user,nil
+
+}

@@ -64,3 +64,49 @@ func (this *ContactService) SearchFriend(userid int64) ([]model.User, error) {
 	}
 	return users, nil
 }
+
+func (this *ContactService) SearchComunityIds(userId int64) ([]int64, error) {
+	conids := make([]int64, 0)
+	e := DbEngin.Table(new(model.Contact)).Where("ownerid =? and cate=?", userId, model.CONCAT_CATE_COMUNITY).Cols("dstobj").Find(&conids)
+	return conids, e
+}
+
+func (service *ContactService) SearchComunity(userId int64) ([]model.Community) {
+	comIds := make([]int64, 0)
+
+	DbEngin.Table(new(model.Contact)).Where("ownerid = ? and cate = ?", userId, model.CONCAT_CATE_COMUNITY).Cols("dstobj").Find(&comIds)
+
+	if len(comIds) == 0 {
+		return nil
+	}
+	coms := make([]model.Community, 0)
+	DbEngin.In("id", comIds).Find(&coms)
+	return coms
+}
+
+//加群
+func (service *ContactService) JoinCommunity(userId, comId int64) error {
+	cot := model.Contact{
+		Ownerid: userId,
+		Dstobj:  comId,
+		Cate:    model.CONCAT_CATE_COMUNITY,
+	}
+	DbEngin.Get(&cot)
+	if (cot.Id == 0) {
+		_, err := DbEngin.InsertOne(cot)
+		return err
+	} else {
+		return nil
+	}
+}
+
+func (this *ContactService) CreateGroup(userId int64, groupName string) (model.Community, error) {
+	group := model.Community{}
+	group.Ownerid = userId
+	group.Name = groupName
+	group.Cate = 2
+	group.Memo = ""
+	group.Icon = "/asset/images/avatar0.png"
+	_, e := DbEngin.InsertOne(&group)
+	return group, e
+}

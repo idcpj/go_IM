@@ -366,8 +366,8 @@
                     },
                     _joincomunity:function(dstobj){
                         var that = this;
-                        post("contact/joincommunity",{dstid:dstobj},function(res){
-                            if(res.code==200){
+                        post("contact/joincommunity",{dstid:dstobj,userid:userId()},function(res){
+                            if(res.code===0){
                                 mui.toast("添加成功");
 
                                 that.loadcommunitys();
@@ -391,6 +391,30 @@
                             }
                         },'div');
                         document.querySelector('.mui-popup-input input').type = 'number';
+                    },
+                    addcomunity:function(){
+                        var that =this;
+                        mui.prompt('',"请输入群名","创群",["取消",'确认'],function (e) {
+                            console.log(e);
+                            if (e.index == 1) {
+                                    that._addcomunity(e.value)
+                            }else{
+                                mui.toast('您取消了创群');
+                            }
+                        })
+                    },
+                    _addcomunity:function(groupName){
+
+                        var that = this;
+                        post("contact/addcommunity",{group_name:groupName,userid:userId()},function(res){
+                            if(res.code==200){
+                                mui.toast("添加成功");
+
+                                that.loadcommunitys();
+                            }else{
+                                mui.toast(res.msg);
+                            }
+                        })
                     },
                     quit:function () {
                         sessionStorage.removeItem("userid")

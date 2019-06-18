@@ -25,6 +25,7 @@ func init() {
 	DbEngin.Sync2(
 		new(model.User),
 		new(model.Contact),
+		new(model.Community),
 	)
 
 }

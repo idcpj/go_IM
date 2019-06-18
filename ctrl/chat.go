@@ -69,7 +69,7 @@ const (
 type Node struct {
 	Conn      *websocket.Conn
 	DataQueue chan []byte
-	GroupSets set.Interface
+	GroupSets set.Interface  //把群放入其中
 }
 
 var clientMap = make(map[int64]*Node, 0)
@@ -102,6 +102,16 @@ func Chat(w http.ResponseWriter, r *http.Request) {
 		DataQueue: make(chan []byte, 50),
 		GroupSets: set.New(set.ThreadSafe),
 	}
+	//获取用户全部的群 id
+	comIds,e :=contactService.SearchComunityIds(userId)
+	if e != nil {
+		log.Fatal(e)
+		return
+	}
+	for _,v:=range comIds {
+		node.GroupSets.Add(v)
+	}
+
 	rw.Lock()
 	clientMap[userId] = node
 	rw.Unlock()
@@ -111,7 +121,6 @@ func Chat(w http.ResponseWriter, r *http.Request) {
 	//接受逻辑
 	go recvproc(node)
 
-	sendMsg(userId, []byte("hello,world!"))
 
 }
 
@@ -143,6 +152,14 @@ func dispath(data []byte) {
 		sendMsg(msg.Dstid, data)
 	case CMD_ROOM_MSG:
 		//群聊转发逻辑
+		for userId,v:=range clientMap{
+			log.Println("userId=",userId)
+			log.Println("msg.Id =",msg.Id)
+			//过滤发送者
+			if userId!=msg.Userid  && v.GroupSets.Has(msg.Dstid) {
+				v.DataQueue<-data
+			}
+		}
 	case CMD_HEART:
 
 	}
