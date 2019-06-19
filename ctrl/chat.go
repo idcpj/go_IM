@@ -7,9 +7,11 @@ import (
 	"go_web/service"
 	"gopkg.in/fatih/set.v0"
 	"log"
+	"net"
 	"net/http"
 	"strconv"
 	"sync"
+	"time"
 )
 
 type Message struct {
@@ -75,6 +77,16 @@ type Node struct {
 var clientMap = make(map[int64]*Node, 0)
 var rw sync.RWMutex
 
+//用来存放发送的药广播的数据
+var udpsendchan = make(chan []byte,1024)
+
+func init() {
+	go  updrecvproc()
+	time.Sleep(1*time.Second)
+	go  updsendproc()
+}
+
+
 //ws://127.0.0.1/chat>id=1&token=xxx
 func Chat(w http.ResponseWriter, r *http.Request) {
 
@@ -131,11 +143,70 @@ func recvproc(node *Node) {
 			log.Println(err)
 			return
 		}
-		dispath(data)
+		//dispath(data)
+		//把数据发到局域网
+		boardMsg(data)
 		log.Println("data    :", string(data))
 	}
 }
 
+func boardMsg(bytes []byte) {
+	udpsendchan<-bytes
+}
+//upd 发送协程
+func updsendproc(){
+	log.Println("start updsendproc")
+	//使用 udp 协议拨号
+	conn, e := net.Dial("udp", "192.168.1.2:3000") //分发给指定 ip
+	if e != nil {
+		log.Println("协议拨号:",e.Error())
+		return
+	}
+	defer  conn.Close()
+
+	for{
+		select {
+		case data:=<-udpsendchan:
+			log.Println("udpsendchan   ",data)
+			_, e := conn.Write(data)
+			if e != nil {
+				log.Println(e.Error())
+				return
+			}
+		}
+	}
+}
+
+//upd 接受协程
+func updrecvproc(){
+	log.Println("start udprecvproc")
+	//监听 udp 端口
+	conn, e := net.ListenUDP("udp", &net.UDPAddr{
+		IP:   net.IPv4zero,
+		Port: 3000,
+	})
+	if e != nil {
+		log.Println("监听 udp 端口",e.Error())
+		return
+	}
+	defer conn.Close()
+	for  {
+		var buf [512]byte
+		n, e := conn.Read(buf[0:])
+		if e != nil {
+			log.Println(e.Error())
+			return
+		}
+		log.Println("buf ",buf)
+		//处理发来的数据
+		dispath(buf[0:n])
+
+	}
+	log.Println("stop udprecvproc")
+
+}
+
+//处理数据
 func dispath(data []byte) {
 	//解析 data 为 message
 
