@@ -75,3 +75,10 @@ build.sh 打包 mac 平台
 
 注意在 linux 下执行
 `nohup ./chat >>./log.log 2>&1 &`
+
+
+## 单体应用分支
+master
+
+## 分布式分支
+dis_master
