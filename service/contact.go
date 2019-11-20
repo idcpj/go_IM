@@ -2,7 +2,7 @@ package service
 
 import (
 	"errors"
-	"go_web/model"
+	"go_im/model"
 )
 
 type ContactService struct {

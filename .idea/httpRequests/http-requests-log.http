@@ -3,6 +3,15 @@ Content-Type: application/x-www-form-urlencoded
 
 mobile=15726817105&passwd=123456
 
+<> 2019-06-19T080434.200.json
+
+###
+
+POST http://127.0.0.1:9001/user/login
+Content-Type: application/x-www-form-urlencoded
+
+mobile=15726817105&passwd=123456
+
 <> 2019-06-13T092819.200.json
 
 ###
@@ -388,13 +397,6 @@ Content-Type: application/x-www-form-urlencoded
 mobile=157268127104&passwd=12321
 
 <> 2019-06-11T093503.200.txt
-
-###
-
-POST http://127.0.0.1:9001/user/register
-Content-Type: application/x-www-form-urlencoded
-
-mobile=157268127104&passwd={{passwd}}
 
 ###
 

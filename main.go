@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "github.com/go-sql-driver/mysql"
-	"go_web/ctrl"
+	"go_im/ctrl"
 	"html/template"
 	"log"
 	"net/http"

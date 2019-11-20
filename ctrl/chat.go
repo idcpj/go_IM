@@ -3,8 +3,8 @@ package ctrl
 import (
 	"encoding/json"
 	"github.com/gorilla/websocket"
-	"go_web/model"
-	"go_web/service"
+	"go_im/model"
+	"go_im/service"
 	"gopkg.in/fatih/set.v0"
 	"log"
 	"net/http"

@@ -2,7 +2,7 @@ package service
 
 import (
 	"github.com/go-xorm/xorm"
-	"go_web/model"
+	"go_im/model"
 	"log"
 )
 

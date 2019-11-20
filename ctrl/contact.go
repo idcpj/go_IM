@@ -1,9 +1,9 @@
 package ctrl
 
 import (
-	"go_web/args"
-	"go_web/service"
-	"go_web/util"
+	"go_im/args"
+	"go_im/service"
+	"go_im/util"
 	"net/http"
 )
 

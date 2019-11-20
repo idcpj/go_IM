@@ -3,8 +3,8 @@ package service
 import (
 	"errors"
 	"fmt"
-	"go_web/model"
-	"go_web/util"
+	"go_im/model"
+	"go_im/util"
 	"math/rand"
 	"time"
 )

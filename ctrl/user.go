@@ -2,10 +2,10 @@ package ctrl
 
 import (
 	"fmt"
-	"go_web/args"
-	"go_web/model"
-	"go_web/service"
-	"go_web/util"
+	"go_im/args"
+	"go_im/model"
+	"go_im/service"
+	"go_im/util"
 	"log"
 	"math/rand"
 	"net/http"
